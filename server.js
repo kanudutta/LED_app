@@ -64,9 +64,12 @@ var server = http.createServer(function(request, response) {
     }
 });
 
-server.listen(8001);
+var port = process.env.PORT || 5000
+server.listen(port);
 
 var io = require('socket.io').listen(server);
+
+console.log("http server listening on %d", port)
 
 io.set('log level', 1);
 
