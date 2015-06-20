@@ -1,0 +1,45 @@
+<html>
+  <head>
+     <meta charset="UTF-8">
+    <meta name="description" content="Control the lights">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Barry Byford">
+    <title>Control the lights</title>
+    <link rel="icon" href="led.gif" type="image/gif" sizes="16x16">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="button.css">
+  </head>
+  <body>
+    <script>
+      var socket = io.connect();
+      socket.on('lightR', function(data){
+        console.log('light!!');
+        $('#status').text(data);
+      });
+      $(document).ready(function(){
+        $("#redButton").click(function() {
+          socket.emit('light' ,"red");
+          $('#status').text('red')
+        });
+        $("#amberButton").click(function() {
+          socket.emit('light' ,"amber");
+          $('#status').text('amber')
+        });
+        $("#greenButton").click(function() {
+          socket.emit('light' ,"green");
+          $('#status').text('green')
+        });
+      });
+    </script>
+
+
+    <div>
+      <button type="button" id='redButton'>Red</button>
+      <button type="button" id='amberButton'>Amber</button>
+      <button type="button" id='greenButton'>Green</button>
+    </div>
+    <div id='status'>Light setting</div>
+  </body>
+</html>
+
