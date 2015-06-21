@@ -1,6 +1,14 @@
 var Gpio = require('onoff').Gpio;
 var io = require('socket.io-client');
-var socket = io.connect('http://192.168.1.117:8001', {
+
+// Advertise service
+uriBeacon = require('uri-beacon');
+uriBeacon.advertise('https://goo.gl/vXx7uK');
+
+// var app = 'http://192.168.1.117:8001';
+var app = 'https://polar-hamlet-3564.herokuapp.com/';
+
+var socket = io.connect(app, {
       reconnect: true
     });
 
