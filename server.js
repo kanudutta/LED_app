@@ -92,3 +92,14 @@ io.sockets.on('connection', function(socket){
       console.log('light sent');
     });
 });
+
+function favicon(response) {
+    console.log("Request handler 'favicon' was called.");
+    var img = fs.readFileSync('./favicon.ico');
+    response.writeHead(200, {"Content-Type": "image/x-icon"});
+    response.end(img,'binary');
+}
+// exports.favicon = favicon;
+
+var handle = {}
+handle["/favicon.ico"] = requestHandlers.favicon;
