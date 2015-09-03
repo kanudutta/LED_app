@@ -102,4 +102,4 @@ function favicon(response) {
 // exports.favicon = favicon;
 
 var handle = {}
-handle["/favicon.ico"] = requestHandlers.favicon;
+handle["/favicon.ico"] = favicon;
